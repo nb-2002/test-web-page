@@ -1,1 +1,30 @@
 // app global css in SCSS form
+
+
+.q-layout {
+    background-color: $background;
+}
+
+.q-header {
+    background-color: $background;
+    color: $font;
+}
+
+#menu-button {
+    padding: 0px;
+    color: $font;
+    font-size: 60px;
+    font-weight:1000;
+}
+
+#new-game-button{
+    pointer-events: none;
+    background-color: #968A7C;
+    font-size: large;
+    color:white;
+}
+
+.q-card{
+    color: $font;
+    font-size: large;
+}
