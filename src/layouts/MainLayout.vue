@@ -43,6 +43,9 @@ const boxes1 = ref<{b: boolean, boxarr: Box[]}>({b:true, boxarr:[...Array(16).ke
 gm2048.value.refreshBoard(boxes1.value.boxarr);
 
 onMounted(() => {
+  window.addEventListener("keydown", (event: KeyboardEvent) => {
+    if( ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'].includes(event.key) ) event.preventDefault();
+  });
   gm2048.value.doMoves(boxes1.value.boxarr, highscore);
 });
 
