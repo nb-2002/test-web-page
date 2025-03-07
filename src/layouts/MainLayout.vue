@@ -24,7 +24,7 @@
     </q-header>
     
     <q-page-container>
-      <router-view :gm2048="gm2048" :boxarr="boxes1"/>
+      <router-view :gm2048="gm2048" :boxarr="boxes1" :highscore="highscore" v-touch-swipe="onSwipe"/>
     </q-page-container>
   </q-layout>
 </template>
@@ -48,6 +48,11 @@ onMounted(() => {
   });
   gm2048.value.doMoves(boxes1.value.boxarr, highscore);
 });
+
+const onSwipe = (event: { evt?: Event; touch?: boolean; mouse?: boolean; direction?: "up" | "right" | "down" | "left"; duration?: number; distance?: { x?: number; y?: number; }; }) => {
+  if (!event.direction) return;
+  gm2048.value.doMovesWithSwipe(event.direction, boxes1.value.boxarr, highscore);
+};
 
 function newButton() {
   gm2048.value.state = gm2048.value.initialize();

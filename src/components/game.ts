@@ -57,9 +57,28 @@ export class Game2048{
         }
     }
 
+
+    doMovesWithSwipe(direction: string, boxes: Box[], highscore: Ref<number>){
+        switch (direction) {
+            case 'up':
+                this.moveUp(boxes);
+                break;
+            case 'down':
+                this.moveDown(boxes);
+                break;
+            case 'left':
+                this.moveLeft(boxes);
+                break;
+            case 'right':
+                this.moveRight(boxes);
+                break;
+        }
+        if(highscore.value < this.state.score){
+            highscore.value = this.state.score;
+        }
+    }
+
     doMoves(boxes: Box[], highscore: Ref<number>){
-        console.log("keydown")
-        
         window.addEventListener('keydown', (event) => {
             switch (event.key) {
                 case 'ArrowUp':
